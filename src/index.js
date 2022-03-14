@@ -1,9 +1,12 @@
-const { SapphireClient } = require('@sapphire/framework');
+const { SapphireClient, LogLevel } = require('@sapphire/framework');
 const { token } = require('../config');
 
 const client = new SapphireClient({ 
     intents: ['GUILDS', 'GUILD_MESSAGES'],
-    defaultPrefix: '+'
+    defaultPrefix: '+',
+    logger: {
+        level: LogLevel.info
+    }
 });
 
 client.login(token);

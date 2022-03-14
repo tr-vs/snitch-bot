@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { Command, ApplicationCommandRegistry } = require('@sapphire/framework');
+const { Command, RegisterBehavior } = require('@sapphire/framework');
 
 class UwuCommand extends Command {
     constructor(context, options) {
@@ -9,28 +9,17 @@ class UwuCommand extends Command {
         });
     }
     registerApplicationCommands(registry) {
-		// Registering with the discord.js options object
-		registry.registerChatInputCommand({
-			name: this.name,
-			description: 'Sends a uwu in chat'
-		});
-
 		// Registering with the builder
 		const builder = new SlashCommandBuilder()
 			.setName(this.name)
 			.setDescription('Sends a uwu in chat');
-		registry.registerChatInputCommand(builder);
-
-		// Registering with the builder provided by the method
-		registry.registerChatInputCommand(
-			(builder) =>
-				builder
-					.setName(this.name)
-					.setDescription('Sends a uwu in chat')
-		);
+		registry.registerChatInputCommand(builder, {
+			behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
+			guildIds: ['720435717192548374']
+		});
 	}
 
-    async chatInputRun(CommandInteraction) {
+    async chatInputRun(interaction) {
         return await interaction.reply('pong');
     }
 }

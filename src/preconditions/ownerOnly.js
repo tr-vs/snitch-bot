@@ -1,8 +1,8 @@
 const { Precondition } = require('@sapphire/framework');
 
 class OwnerOnlyPrecondition extends Precondition {
-    run(message) {
-        return message.author.id === 'YOUR_ID'
+    chatInputRun(interaction) {
+        return interaction.user.id === '281604477457399818'
             ? this.ok()
             : this.error({ 
                 message: 'Only the bot owner can use this command!',
