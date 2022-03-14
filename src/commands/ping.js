@@ -1,4 +1,5 @@
-const { Command } = require('@sapphire/framework');
+const { Command, CommandOptionsRunTypeEnum } = require('@sapphire/framework');
+const { Time } = require('@sapphire/time-utilities');
 
 class PingCommand extends Command {
     constructor(context, options) {
@@ -6,7 +7,12 @@ class PingCommand extends Command {
             ...options,
             name: 'ping',
             aliases: ['pong'],
-            description: 'ping pong'
+            description: 'ping pong',
+            cooldownDelay: Time.Second * 10,
+            cooldownFilteredUsers: ['281604477457399818'],
+            runIn: CommandOptionsRunTypeEnum.GuildAny,
+            requiredUserPermissions: ['BAN_MEMBERS'],
+            requiredClientPermissions: ['BAN_MEMBERS']
         });
     }
 

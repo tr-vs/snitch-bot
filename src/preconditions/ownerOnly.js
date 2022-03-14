@@ -4,7 +4,10 @@ class OwnerOnlyPrecondition extends Precondition {
     run(message) {
         return message.author.id === 'YOUR_ID'
             ? this.ok()
-            : this.error({ message: 'Only the bot owner can use this command!' });
+            : this.error({ 
+                message: 'Only the bot owner can use this command!',
+                context: { silent: true }
+            });
     }
 }
 
