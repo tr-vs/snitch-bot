@@ -4,9 +4,12 @@
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
     "@sapphire/framework": "^3.0.0-next.5524516.0",
+    "colorthief": "^2.3.2",
     "discord.js": "^13.6.0",
+    "mongoose": "^6.2.6",
     "nodemon": "^2.0.15",
-    "paster.js": "^1.0.0"
+    "paster.js": "^1.0.0",
+    "querystring": "^0.2.1"
   },
   "scripts": {
     "start": "node src/index.js"
