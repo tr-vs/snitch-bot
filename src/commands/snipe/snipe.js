@@ -8,7 +8,7 @@ class SnipeCommand extends Command {
         super(context, {
             ...options,
             name: 'snipe',
-            description: 'view up to 3 recently deleted messages',
+            description: 'View up to 3 recently deleted messages',
             RequriedClientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES']
         });
     }
