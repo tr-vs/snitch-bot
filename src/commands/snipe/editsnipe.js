@@ -31,7 +31,7 @@ class EditSnipeCommand extends Command {
 	}
 
     async chatInputRun(interaction) {
-        if (interaction.channel.type != "dm") {
+        if (interaction.channel.type != "DM") {
             const role = Guild.findOne({
                 guildID: interaction.guild.id,
             }, (err, guild) => {
