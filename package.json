@@ -4,9 +4,12 @@
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
     "@sapphire/framework": "^3.0.0-next.5524516.0",
+    "canvas": "^2.9.1",
+    "canvas-text-wrapper": "^0.10.2",
     "colorthief": "^2.3.2",
     "discord.js": "^13.6.0",
     "mongoose": "^6.2.6",
+    "node-fetch": "^2.6.1",
     "nodemon": "^2.0.15",
     "paster.js": "^1.0.0",
     "querystring": "^0.2.1"
