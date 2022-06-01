@@ -35,10 +35,10 @@ module.exports.Get = async (interaction) => {
         .setDescription(
             entries.slice(0, 10)
                 .map(([userID, amount]) => {
-                    if (num == 9) {
-                        return `•「 **${++num}** 」一 <@${userID}> has **${amount}** crowns`;
+                    if (num === 9) {
+                        return `•「 **${++num}** 」一 ${interaction.guild.members.cache.get(userID)} has **${amount}** crowns`;
                     } else {
-                        return `•「 **0${++num}** 」一 <@${userID}> has **${amount}** crowns`;
+                        return `•「 **0${++num}** 」一 ${interaction.guild.members.cache.get(userID)} has **${amount}** crowns`;
                     }
                 })
                 .join('\n') + `${authorPos ? `\n\n\`Your rank is: #${authorPos}\`` : ''}`,

@@ -1,0 +1,1 @@
+console.log('15 documents deleted under user: 281604477457399818')

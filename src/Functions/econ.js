@@ -42,7 +42,7 @@ module.exports.getBal = async (userID, guildID) => {
 };
 
 module.exports.addHit = async (userID, guildID) => {
-	const result = await bal.findOne({
+	const result = bal.findOne({
 		userID,
 		guildID,
 	});
@@ -70,7 +70,7 @@ module.exports.addHit = async (userID, guildID) => {
 		creme = result.creme;
 		fruit = result.fruit;
 	} else {
-		await new bal({
+		new bal({
 			guildID,
 			userID,
 			steals,
@@ -85,7 +85,7 @@ module.exports.addHit = async (userID, guildID) => {
 		return [hits + 1, 1];
 	}
 	balCache[`${guildID}-${userID}`] = [hits, steals, menthol, mango, cucumber, creme, fruit];
-	await result.updateOne({
+	result.updateOne({
 		hits,
 	});
 	return [hits, add];
@@ -355,8 +355,10 @@ module.exports.shop = async (userID, guildID) => {
 		userID,
 		guildID,
 	});
+	
 	let pod = '';
 	let cost = '**Cost:** 10 Hits';
+
 	if (result.mango > 0) {
 		pod = 'You\'ve reached the end! Send suggestions for new upgrade paths in the support server. :)';
 	} else if (result.menthol > 0) {
@@ -370,6 +372,7 @@ module.exports.shop = async (userID, guildID) => {
 	} else {
 		pod = '<:fruit:780310301357637662> **Fruit Pod** | Perks: 50% off discount for black airforces.\n**Cost:** 20 Hits';
 	}
+
 	if (result.fruit > 0) {
 		cost = '**Cost:** 5 Hits';
 	}
