@@ -3,16 +3,17 @@
   "main": "src/bot.js",
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
-    "@sapphire/framework": "^3.0.0-next.5524516.0",
-    "canvas": "^2.9.1",
-    "canvas-text-wrapper": "^0.10.2",
+    "@sapphire/framework": "^3.0.0-next.c7c8bfd.0",
+    "cheerio": "^1.0.0-rc.10",
     "colorthief": "^2.3.2",
-    "discord.js": "^13.6.0",
-    "mongoose": "^6.2.6",
-    "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.15",
+    "discord.js": "^13.7.0",
+    "g-i-s": "^2.1.6",
+    "mongoose": "^6.3.4",
+    "node-fetch": "^2.6.7",
+    "parse-duration": "^1.0.2",
     "paster.js": "^1.0.0",
-    "querystring": "^0.2.1"
+    "querystring": "^0.2.1",
+    "underscore": "^1.13.3"
   },
   "scripts": {
     "start": "node src/index.js"
