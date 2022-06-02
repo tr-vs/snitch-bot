@@ -7,7 +7,8 @@ const Balance = require('../../Functions/JUUL/balance.js');
 const Record = require('../../Functions/JUUL/record.js');
 const Leaderboard = require('../../Functions/JUUL/leaderboard.js');
 const Status = require('../../Functions/JUUL/status.js');
-const { shop } = require('../../Functions/econ.js');
+const Shop = require('../../Functions/JUUL/shop.js');
+const Buy = require('../../Functions/JUUL/buy.js');
 
 class JuulCommand extends Command {
     constructor(context, options) {
@@ -63,6 +64,25 @@ class JuulCommand extends Command {
                     .setName('shop')
                     .setDescription('View what\'s available in the shop.')
             )
+            .addSubcommand(subcommand =>
+                subcommand
+                    .setName('buy')
+                    .setDescription('Upgrade your pods or buy anything in the shop')
+                    .addStringOption(option => 
+                        option
+                            .setName('item')
+                            .setDescription('name of item wish to be bought')
+                            .setRequired(true)
+                            .addChoices(
+                                { name: 'mango pod', value: 'mango' },
+                                { name: 'menthol pod', value: 'menthol' },
+                                { name: 'fruit pod', value: 'fruit' },
+                                { name: 'cucumber pod', value: 'cucumber' },
+                                { name: 'black airforces', value: 'black airforces' },
+                            )
+                    )
+                    .addIntegerOption(option => option.setName('quantity').setDescription('the amount in which you wish to purchase'))
+            )
 		registry.registerChatInputCommand(builder, {
 			behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
 			guildIds: ['720435717192548374'],
@@ -94,6 +114,9 @@ class JuulCommand extends Command {
                 break;
             case 'shop':
                 await Shop(interaction);
+                break;
+            case 'buy':
+                await Buy(interaction);
                 break;
         }
     }
