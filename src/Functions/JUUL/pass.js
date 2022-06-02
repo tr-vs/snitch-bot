@@ -7,7 +7,7 @@ module.exports = async (interaction) => {
     const memberObject = await interaction.guild.members.fetch(userObject.id);
 
     try {
-        await message.guild.members.fetch();
+        await interaction.guild.members.fetch();
     } catch (err) {
         console.error(err);
     }
@@ -70,7 +70,7 @@ module.exports = async (interaction) => {
     if (count === 420) {
         const embed = new MessageEmbed()
             .setTitle('JUUL Passed')
-            .setDescription(`You passed the JUUL to ${message.guild.members.cache.get(args.ping.id)}\n420 <a:LETSFUCKINGGO:756955224412782723>`)
+            .setDescription(`You passed the JUUL to ${interaction.guild.members.cache.get(args.ping.id)}\n420 <a:LETSFUCKINGGO:756955224412782723>`)
             .setColor('2f3136')
             .setFooter({ text: `The JUUL has now been passed ${count} times.`, iconURL: 'https://cdn.discordapp.com/emojis/777674367719047180.png?v=1' });
         return interaction.reply({ embeds: [ embed ]});
@@ -78,9 +78,8 @@ module.exports = async (interaction) => {
 
     const embed = new MessageEmbed()
         .setTitle('JUUL Passed')
-        .setDescription(`You passed the JUUL to ${message.guild.members.cache.get(args.ping.id)}`)
+        .setDescription(`You passed the JUUL to ${interaction.guild.members.cache.get(args.ping.id)}`)
         .setColor('2f3136')
         .setFooter({ text: `The JUUL has now been passed ${count} times.`, iconURL: 'https://media.discordapp.net/attachments/726948576441401344/777382605564674099/774076881825169438.png' });
     return interaction.reply({ embeds: [ embed ]});
-
 }

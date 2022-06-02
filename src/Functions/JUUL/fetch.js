@@ -9,14 +9,14 @@ module.exports = async (interaction) => {
     }
 
     const pass = juul.findOne({
-        guildID: message.guild.id,
+        guildID: interaction.guild.id,
     }, (err, passes) => {
         if (err) console.error(err);
         if(!passes) {
             const juuls = new juul({
                 _id: mongoose.Types.ObjectId(),
-                guildID: message.guild.id,
-                juulHolder: message.author.id,
+                guildID: interaction.guildId,
+                juulHolder: interaction.user.id,
                 times: 0,
                 record: 0,
                 hit: false,
@@ -50,7 +50,7 @@ module.exports = async (interaction) => {
     } catch (error) {
         await pass.updateOne({
             times: 0,
-            juulHolder: message.author.id,
+            juulHolder: interaction.user.id,
             hit: false,
         });
 
